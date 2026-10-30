@@ -26,10 +26,9 @@
     const reset = el('button', 'inline-link', ja ? '別のコースター' : '更换杯垫'); reset.type = 'button'; result.append(name, status, reset);
     const help = el('details', 'coaster-reference'), summary = el('summary', '', ja ? '原版の資料' : '原版资料');
     const marker = el('img', 'coaster-marker'); marker.src = data.marker.src; marker.alt = ja ? '元のAR認識マーカー' : '原版 AR 识别标记';
-    const note = el('p', 'coaster-source-note', ja ? '保存されているのはAR認識画像です。コースターの紙面の謎は含まれていません。' : '存档包含 AR 识别图，未包含三款杯垫上的纸面谜题。');
-    const answers = el('details', 'coaster-answers'), answerSummary = el('summary', '', ja ? '確認済みの解答を見る' : '查看已核对的答案'), list = el('ul');
+    const answers = el('details', 'coaster-answers'), answerSummary = el('summary', '', ja ? '答えを見る' : '查看答案'), list = el('ul');
     for (const c of data.characters) list.append(el('li', '', c.name[language] + '：' + c.answers[0]));
-    answers.append(answerSummary, list); help.append(summary, marker, note, answers);
+    answers.append(answerSummary, list); help.append(summary, marker, answers);
     controls.append(form, result, help); box.append(stage, controls);
     const audio = el('audio'); audio.preload = 'none'; audio.hidden = true; box.append(audio); activeAudio = audio;
     let selected = null, clickCount = 0, token = 0;

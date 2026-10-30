@@ -95,3 +95,5 @@
 .home-downloads .inline-link{display:inline-flex;align-items:center;min-height:30px;white-space:nowrap}
 .download-size{font-size:9px;color:#767970;white-space:nowrap}
 @media(max-aspect-ratio:1/1){.home-downloads{justify-content:center}.home .home-art{height:max(0px,min(calc(100svh - 310px),141.5vw))}}
+
+.home .home-footer{justify-content:flex-end}

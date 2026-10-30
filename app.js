@@ -116,7 +116,7 @@
       });
       for(const name of ['pause','ended','error'])video.addEventListener(name,restoreMusic);
     }
-    openPanel(settings.language==='ja'?'原版体験の資料':'原版体验资料',content);
+    openPanel(settings.language==='ja'?'資料':'原版资料',content);
   }
   function stopVoice() { voiceToken++; voice.pause(); voice.removeAttribute('src'); voiceQueue = []; $('voice-state').textContent = ''; }
   function playQueue() {
@@ -300,13 +300,13 @@
           solved[e.id]='solved';persist();updateControls();advance(true);
         } else {
           const custom=(display.incorrect||[]).find(rule=>Object.entries(rule).filter(([key])=>['time','at','what'].includes(key)).every(([key,value])=>core.normalize(values[key])===core.normalize(value)));
-          const message=custom?.message ? core.cleanText(custom.message) : settings.language==='ja'?'メールの内容が正しくありません。修正して再送信してください。':'邮件内容尚未匹配，请修改后重新发送。';
+          const message=custom?.message ? core.cleanText(custom.message) : settings.language==='ja'?'メールの内容が正しくありません。修正して再送信してください。':'邮件内容有误，请修改后重新发送。';
           feedback.textContent=message;
           feedback.scrollIntoView({block:'nearest'});
         }
       },
       onContinue() { finishTyping();solved[e.id]='story-skip';advance(true); },
-      hint() { const ja=settings.language==='ja';return (ja?'正解の組み合わせ：':'原作有效组合：')+[e.answer[0]||(ja?'時刻指定なし':'任意时刻'),optionLabel('to',e.answer.length>3?e.answer[3]:e.to),optionLabel('at',e.answer[1])||(ja?'場所指定なし':'任意地点'),optionLabel('what',e.answer[2])].join(' · '); }
+      hint() { const ja=settings.language==='ja';return (ja?'正解の組み合わせ：':'答案组合：')+[e.answer[0]||(ja?'時刻指定なし':'任意时刻'),optionLabel('to',e.answer.length>3?e.answer[3]:e.to),optionLabel('at',e.answer[1])||(ja?'場所指定なし':'任意地点'),optionLabel('what',e.answer[2])].join(' · '); }
     });
     $('dmail-layer').replaceChildren(editor);
   }
@@ -355,14 +355,14 @@
       if (correct) { stopFastForward();solved[e.id] = 'solved'; persist();updateControls();advance(true); }
       else {
         const custom = (display.incorrect || []).find(rule => Object.entries(rule).filter(([key]) => ['time', 'at', 'what'].includes(key)).every(([key, value]) => core.normalize(values[key]) === core.normalize(value)));
-        feedback.textContent = custom?.message ? core.cleanText(custom.message) : settings.language==='ja'?'答えが違うようです。もう一度試してください。':'答案尚未匹配，再试一次。';
+        feedback.textContent = custom?.message ? core.cleanText(custom.message) : settings.language==='ja'?'答えが違うようです。もう一度試してください。':'答案不正确，再试一次。';
       }
     }
     inputs.answer?.addEventListener('keydown', ev => { if (ev.key === 'Enter'&&!ev.isComposing&&ev.keyCode!==229) { ev.preventDefault(); submit(); } });
     actions.append(makeButton(settings.language==='ja'?'回答する':'提交答案', submit, 'solve'));
     actions.append(makeButton(settings.language==='ja'?'問題をスキップ →':'跳过题目 →', () => { finishTyping(); solved[e.id] = 'story-skip'; advance(true); }));
     actions.append(makeButton(settings.language==='ja'?'ヒント':'提示', () => {
-      feedback.textContent = (settings.language==='ja'?'正解：':'原作可接受答案：') + e.answers.join(' / ');
+      feedback.textContent = (settings.language==='ja'?'正解：':'答案：') + e.answers.join(' / ');
     }, 'inline-link'));
     container.append(actions, feedback);
     if (solved[e.id]) feedback.textContent = settings.language==='ja'?(solved[e.id]==='solved'?'回答済み':'スキップ済み'):(solved[e.id] === 'solved' ? '已解答' : '已跳过');
@@ -374,7 +374,7 @@
     $('reader').dataset.clockStyle = ['compact', 'hidden'].includes(settings.clockStyle) ? settings.clockStyle : 'compact';
     $('auto').setAttribute('aria-pressed', String(auto)); $('auto').textContent = auto ? ui('自动 开','オート ON') : ui('自动','オート');
     $('mute').setAttribute('aria-pressed', String(settings.muted)); $('mute').textContent = settings.muted ? ui('声音 关','サウンド OFF') : ui('声音 开','サウンド ON');
-    for(const [id,labels] of Object.entries({'chapter-menu':['选择章节','チャプター選択'],save:['存档与读取','セーブ・ロード'],settings:['阅读设置','読書設定'],'original-materials':['原版体验资料','原版体験の資料'],menu:['返回主菜单','タイトルへ戻る'],'replay-voice':['重听配音','ボイス再生']}))$(id).textContent=ui(...labels);
+    for(const [id,labels] of Object.entries({'chapter-menu':['选择章节','チャプター選択'],save:['存档与读取','セーブ・ロード'],settings:['阅读设置','読書設定'],'original-materials':['原版资料','資料'],menu:['返回主菜单','タイトルへ戻る'],'replay-voice':['重听配音','ボイス再生']}))$(id).textContent=ui(...labels);
     $('controls-toggle').setAttribute('aria-label',ui('播放菜单','再生メニュー'));$('controls-toggle').title=ui('播放菜单','再生メニュー');
     $('panel-close').setAttribute('aria-label',ui('关闭','閉じる'));
     $('mode-badge').textContent = settings.language==='ja'?(settings.mode==='story'?'ストーリーモード':'謎解きモード'):(settings.mode === 'story' ? '故事模式' : '解谜模式');
@@ -512,12 +512,9 @@
     $('home-actions').setAttribute('aria-label',ui('主菜单','メインメニュー'));
     $('home-title').innerHTML=ui('自我指涉的<span>动力学</span>','自己言及の<span>ダイナミクス</span>');
     for(const [id,labels] of Object.entries({
-      'home-sub':['秋叶原，一次偶然的相遇。','秋葉原、偶然の出会い。'],
-      'home-edition':['本地剧情复原版','ローカルストーリー復元版'],
-      'home-footer-edition':['本地剧情复原','ローカルストーリー復元'],
-      'home-meta':['原作日语配音','オリジナル日本語音声'],
-      about:['关于这次复原','この復元版について'],
-      'original-materials-home':['原版体验资料','原版体験の資料'],
+      'home-sub':['秋叶原，一次偶然的相遇。','秋葉原、偶然の出会い。'],      'home-meta':['原作日语配音','オリジナル日本語音声'],
+      about:['游玩说明','遊び方'],
+      'original-materials-home':['原版资料','資料'],
       'coaster-home':['AR 杯垫','ARコースター']
     }))$(id).textContent=ui(...labels);
   }
@@ -669,7 +666,12 @@
     if(ev.target!==$('panel'))return;const r=$('panel').getBoundingClientRect();
     if(ev.clientX<r.left||ev.clientX>r.right||ev.clientY<r.top||ev.clientY>r.bottom)closePanel();
   });
-  $('about').addEventListener('click', () => openPanel('关于这次复原', `<p>这是《STEINS;GATE × タカラッシュ「自己言及のダイナミクス」》的本地剧情复原预览。</p><ul class="about-list"><li>主线 11 个分段，按资源包中的原始时间轴还原阅读顺序。</li><li>使用原作立绘、背景、谜题图片、配音和音乐。正文默认使用用户提供的简体中文译稿，可在阅读设置切换日文；配音仍为原作日语。</li><li>使用原包对白框、姓名牌、回看按钮及字体，并依据原始 UI 锚点和实机截图调整布局。</li><li>原始动画曲线接回淡入淡出、拍照闪光、乌帕掉落、章节弹窗和结尾；演出需播完，拍照需点击目标。</li><li>舞台保留原生人物比例、共同地面和剧本指定的特殊演出。</li><li>缺少摄像头实景的广播会馆、神社、投币柜周边和街头采用用户提供的 VN 背景；零件店使用同类商铺借景，桥附近采用经确认的有人街角借景。这些属于离线改编补景。</li><li>AR 摄像头与现场定位改为固定视角；纸质套件和部分现场线索仍未完整复原。</li><li>开始新游戏后播放 30 秒官方宣传片，可点击跳过；继续存档和选择章节不播放。</li><li>六次世界线变化均已接入视频：前五次采用 Divergence Studio 重制，第六次采用官网母版；起止数值与原剧情事件逐一核对。</li><li>主页 AR 杯垫入口包含 EV-292350 的三名角色、原版答案与九段日语语音；纸面谜题尚未找回，可在原版资料中查看答案。</li><li>本版本支持剧情阅读、原作答案校验、回看、自动播放与本地存档。</li></ul><p class="panel-note">剧情素材来源：Internet Archive 的 xrcity_steinsgate 存档；封面主视觉和齿轮来自原活动官网。原作相关权利归 MAGES.、Nitroplus 及各合作权利人所有。本预览不是官方复刻，也不代表原版 AR 体验已完整恢复。</p>`));
+  $('about').addEventListener('click', () => {
+    const ja=settings.language==='ja';
+    openPanel(ja?'遊び方':'游玩说明', ja
+      ? '<p>画面をクリック、Enter、スペースでつづけます。上スクロールで履歴、下スクロールで次へ進みます。</p><p>Ctrl 長押しで早送りします。章タイトルはクリックでつづけます。オートでは6秒間表示します。</p><p>ストーリーモードは紙の謎を省略します。D-Mail はどちらのモードでも操作できます。</p><p>進行状況はブラウザーに保存されます。別の端末で遊ぶ場合は、メニューからセーブを書き出して読み込んでください。</p><p class="panel-note">© MAGES. / NITRO PLUS<br>資料：Internet Archive「xrcity_steinsgate」、イベント公式サイト。</p>'
+      : '<p>点击画面、Enter 或空格继续；上滚回看，下滚推进。</p><p>按住 Ctrl 快进。章节标题点击后继续，自动播放时停留 6 秒。</p><p>故事模式省略纸质谜题，两种模式均保留 D-Mail 操作。</p><p>进度自动保存在浏览器。更换设备时，可在菜单中导出、导入存档。</p><p class="panel-note">© MAGES. / NITRO PLUS<br>资料来源：Internet Archive「xrcity_steinsgate」、活动官网。</p>');
+  });
   document.addEventListener('keydown', ev => {
     if(ev.key==='Control'){if(!ev.repeat&&!ev.altKey&&!ev.metaKey&&!ev.shiftKey)beginFastForward();return;}
     if(ev.ctrlKey)stopFastForward();
