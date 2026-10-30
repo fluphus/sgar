@@ -1868,19 +1868,19 @@
   {
     "file": "index.html",
     "bytes": 9903,
-    "sha256": "2075f3e056db65dea906042198360268edf72674cee65301f63aef5ab0dd2520",
+    "sha256": "869f6e2ab315da6d28082c99522aaa6bc04c5d8413ad00f3e43a5430066c3967",
     "source": "index.html"
   },
   {
     "file": "local-video.css",
-    "bytes": 1252,
-    "sha256": "fcf72a9c4be354c54073186266452f0e9027499ed834bc18683f70021196620c",
+    "bytes": 1314,
+    "sha256": "2d6911172fffdf49aa52a654fc3b669475d8707b3ab514a2e93d06f9b0d2cd40",
     "source": "local-video.css"
   },
   {
     "file": "local-video.js",
-    "bytes": 7111,
-    "sha256": "ad0f1e86111a5275136d51daf8d31ca848a1d1895bcadd87706ce62ec7abdf22",
+    "bytes": 7731,
+    "sha256": "2c302be145ce3999e25522d12c5e28cfbfecd99cb44095d962f6de2565231df6",
     "source": "local-video.js"
   },
   {

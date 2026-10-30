@@ -53,7 +53,7 @@
     const old = active; active = null;
     if (old) old.cancel();
     $('story-video-layer').hidden = true; $('story-video-layer').style.opacity = '';
-    $('story-video-resume').hidden = true; release($('story-video'));
+    $('story-video-resume').hidden = true; $('story-video-resume').disabled = false; release($('story-video'));
   }
   function playTransition(event, { volume, language }) {
     clearTransition();
@@ -62,34 +62,38 @@
     layer.hidden = false; layer.style.opacity = '1'; video.src = clip.src;
     video.volume = volume; video.muted = volume === 0;
     video.setAttribute('aria-label', (language === 'ja' ? '世界線変動 ' : '世界线变动 ') + clip.from + ' → ' + clip.to);
-    resume.textContent = language === 'ja' ? 'クリックして再生' : '点击播放';
+    const loadingText = language === 'ja' ? '読み込み中…' : '载入中…';
+    const resumeText = language === 'ja' ? 'クリックして再生' : '点击播放';
+    resume.setAttribute('aria-live','polite');
     return new Promise(resolve => {
       let settled = false, watchdog, lastTime = -1, stalledSince = performance.now();
       const cleanup = () => {
         clearInterval(watchdog);
-        video.removeEventListener('ended', ended); video.removeEventListener('error', failed);
+        video.removeEventListener('ended', ended); video.removeEventListener('error', failed); video.removeEventListener('progress', progress);
         document.removeEventListener('visibilitychange', visibility); resume.removeEventListener('click', retry);
       };
       const settle = result => {
-        if (settled) return; settled = true; cleanup(); resume.hidden = true;
+        if (settled) return; settled = true; cleanup(); resume.hidden = true; resume.disabled = false;
         if (!result.played) layer.hidden = true;
         resolve(result);
       };
       const ended = () => settle({ played: true });
       const failed = () => settle({ played: false });
+      const progress = () => { stalledSince = performance.now(); };
       const requestPlay = () => {
         stalledSince = performance.now();
-        video.play().then(() => { if (!settled) resume.hidden = true; }).catch(() => { if (!settled) resume.hidden = false; });
+        resume.textContent = loadingText; resume.disabled = true; resume.hidden = false;
+        video.play().then(() => { if (!settled) { resume.hidden = true; resume.disabled = false; } }).catch(() => { if (!settled) { resume.textContent = resumeText; resume.disabled = false; resume.hidden = false; } });
       };
       const retry = ev => { ev.stopPropagation(); requestPlay(); };
       const visibility = () => { stalledSince = performance.now(); if (document.hidden) video.pause(); else requestPlay(); };
       active = { eventId: event.id, cancel: () => settle({ played: false, cancelled: true }) };
-      video.addEventListener('ended', ended); video.addEventListener('error', failed);
+      video.addEventListener('ended', ended); video.addEventListener('error', failed); video.addEventListener('progress', progress);
       resume.addEventListener('click', retry); document.addEventListener('visibilitychange', visibility);
       watchdog = setInterval(() => {
-        if (document.hidden || !resume.hidden) { stalledSince = performance.now(); return; }
+        if (document.hidden || (!resume.hidden && !resume.disabled)) { stalledSince = performance.now(); return; }
         if (video.currentTime !== lastTime) { lastTime = video.currentTime; stalledSince = performance.now(); }
-        else if (performance.now() - stalledSince > 10000) failed();
+        else if (performance.now() - stalledSince > (video.readyState < 2 && video.currentTime === 0 ? 30000 : 10000)) failed();
       }, 500);
       requestPlay();
     });
