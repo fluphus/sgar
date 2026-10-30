@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light"><meta name="description" content="SGAR · STEINS;GATE 自我指涉的动力学／自己言及のダイナミクス，非官方浏览器剧情复原，支持中文与日本語、故事模式与解谜模式。"><title>STEINS;GATE · 自我指涉的动力学</title>
+  <link rel="stylesheet" href="style.css?v=0.9"><link rel="stylesheet" href="reader-layout.css?v=0.10.29"><link rel="stylesheet" href="dmail.css?v=0.10.29.1">
+  <link rel="stylesheet" href="image-viewer.css?v=0.10.29">
+  <link rel="stylesheet" href="native-ui.css?v=0.10.29">
+  <link rel="stylesheet" href="reader-hud.css?v=review-20261029-1"><link rel="stylesheet" href="ui-controls.css?v=0.10.29">
+  <link rel="stylesheet" href="home-cover.css?v=sgar-20261030-1">
+  <link rel="stylesheet" href="local-video.css?v=worldline-20261023-1"><link rel="stylesheet" href="coaster.css?v=0.10.29">
+  <link rel="stylesheet" href="backlog.css?v=0.10.29">
+  <link rel="stylesheet" href="menu-theme.css?v=0.10.29.1">
+  <link rel="stylesheet" href="chapter-titles.css?v=manual-20261029-1">
+</head>
+<body>
+  <div id="startup-layer" class="startup-layer" hidden><video id="startup-video" muted playsinline preload="none" aria-hidden="true"></video><button id="skip-startup"><span>点击跳过</span></button></div>
+  <main id="home" class="home">
+    <header class="masthead"><span class="wordmark">STEINS;GATE<span class="red-dot">.</span></span><span><span id="home-edition">本地剧情复原版</span> <b>2026.10.30</b></span></header>
+    <div class="home-layout">
+      <div class="home-copy">
+        <p class="eyebrow">XR CITY · AKIHABARA</p>
+        <h1 id="home-title">自我指涉的<span>动力学</span></h1>
+        <p class="home-sub" id="home-sub">秋叶原，一次偶然的相遇。</p>
+        <nav class="home-actions" id="home-actions" aria-label="主菜单">
+          <button id="continue" class="primary" hidden>继续阅读 <span aria-hidden="true">↗</span></button>
+          <button id="start" class="primary">开始阅读 <span aria-hidden="true">→</span></button>
+          <button id="home-chapters" class="text-button">选择章节 <span aria-hidden="true">01 — 11</span></button>          <button id="home-mode" class="text-button">故事模式 <span aria-hidden="true">⇄</span></button>
+        </nav>
+        <div class="home-preferences">          <button id="home-language" class="language-toggle" type="button" aria-label="语言 / 言語：简体中文 / 日本語" aria-pressed="false"><span lang="zh-CN">简体中文</span><span class="language-divider" aria-hidden="true">/</span><span lang="ja">日本語</span><span class="language-arrow" aria-hidden="true">⇄</span></button>          <p class="home-meta" id="home-meta">原作日语配音</p>        </div>
+        <div class="home-links"><button class="inline-link" id="about">关于这次复原</button><button class="inline-link" id="original-materials-home">原版体验资料</button><button class="inline-link" id="coaster-home">AR 杯垫</button></div>
+        <div class="home-downloads"><a class="inline-link" id="download-offline" href="https://github.com/fluphus/sgar/releases/latest/download/sgar-offline.zip">下载离线版</a><span class="download-size">Windows · 215 MB</span><a class="inline-link" id="source-code" href="https://github.com/fluphus/sgar" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+      </div>
+      <div class="home-art"><img class="cover-keyvisual" src="assets/cover-official-keyvisual.webp" width="2000" height="2830" alt="官方活动主视觉：秋叶原街头的冈部、红莉栖与真由理，以及原作标题。" fetchpriority="high"></div>
+    </div>
+    <footer class="home-footer"><span><span id="home-footer-edition">本地剧情复原</span> · 2026.10.30</span><span>© MAGES. / NITRO PLUS</span></footer>
+  </main>
+
+  <div id="player-shell" class="player-shell">
+    <header class="reader-hud" aria-label="播放状态">
+      <div class="hud-cluster">
+      <div class="scene-clock"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg><span id="clock">10:00</span></div>
+      <div id="hud-actions" class="hud-actions"><button id="controls-toggle" class="controls-toggle" aria-label="播放菜单" aria-expanded="false" aria-controls="reader-controls" title="播放菜单"><svg viewBox="0 0 32 32" aria-hidden="true"><circle class="menu-disc" cx="16" cy="16" r="15"/><path class="menu-lines" d="M10 10h12M10 16h12M10 22h12"/></svg></button></div>
+      </div>
+    </header>
+  <main id="reader" class="reader" hidden>
+    <section id="stage" class="stage" aria-label="剧情场景"><div id="background" class="background"></div><div id="props" class="props"></div><div id="actors" class="actors"></div><div id="call-portraits" class="call-portraits"></div><button id="next" class="advance-target" aria-label="继续剧情"></button><div id="transition" class="transition" hidden><span>WORLD LINE</span><strong>世界线发生变动</strong></div></section>
+    <div id="black-curtain" class="native-curtain black-curtain" aria-hidden="true"></div><div id="scene-curtain" class="native-curtain scene-curtain" aria-hidden="true"></div>
+    <img id="golden-uper" class="golden-uper" alt="黄金乌帕" hidden>
+    <img id="photo-image" class="photo-image" alt="" hidden><button id="photo-target" class="photo-target" hidden><img id="photo-reticle" class="photo-reticle" alt=""></button>
+    <div id="flash-curtain" class="native-curtain flash-curtain" aria-hidden="true"></div><div id="original-fin" class="original-fin" lang="en" hidden>Fin.</div>
+    <section id="dialogue" class="dialogue" aria-label="剧情文本"><span id="speaker" class="speaker" lang="zh-CN"></span><div class="dialogue-content"><div id="body-text" class="body-text" lang="zh-CN" aria-live="polite"></div><div id="event-extra" class="event-extra"></div></div><span id="advance-hint" class="sr-only">点击文字或按空格继续</span></section>
+    <section id="phone-layer" class="phone-layer" aria-label="原版手机界面"></section>
+    <section id="dmail-layer" class="dmail-layer" aria-label="D-Mail"></section>
+    <button id="log" class="backlog-button" aria-label="回看记录" title="回看记录"><img src="assets/cacfda08ee581a2764e9bf78.webp" alt=""></button>
+    <nav id="reader-controls" class="reader-controls" aria-label="播放控制" hidden><div class="chapter-heading"><span id="chapter-number"></span><h2 id="chapter-title"></h2></div><span class="mode-badge" id="mode-badge">故事模式</span><div class="control-buttons"><button id="previous">回看记录</button><button id="chapter-menu">选择章节</button><button id="save">存档与读取</button><button id="auto" aria-pressed="false">自动</button><button id="mute" aria-pressed="false">声音 开</button><button id="settings">阅读设置</button><button id="original-materials">原版体验资料</button><button id="menu">返回主菜单</button><button id="replay-voice" hidden>重听配音</button></div><div class="reader-status"><span id="position"></span><span id="voice-state" aria-live="polite"></span></div><div class="progress-track"><div id="progress-fill"></div></div></nav>
+    <button id="chapter-title-card" class="chapter-title-card" type="button" hidden><span class="chapter-title-composition"><img class="chapter-title-art" alt="" decoding="async"><span class="chapter-title-number"></span><span class="chapter-title-prefix" lang="ja"></span><span class="chapter-title-term" lang="ja"></span><span class="chapter-title-translation" lang="zh-CN"></span></span><span class="chapter-title-continue"></span></button>
+  </main>
+    <div id="story-video-layer" class="story-video-layer" hidden><video id="story-video" playsinline preload="none"></video><button id="story-video-resume" class="story-video-resume" hidden>点击播放</button></div>
+  </div>
+  <dialog id="panel" aria-labelledby="panel-title"><div class="panel-header"><h2 id="panel-title"></h2><button id="panel-close" class="icon-button" aria-label="关闭"><img src="assets/fab1c4931454b1a99b32527c.webp" alt=""></button></div><div id="panel-body"></div></dialog>
+  <div id="toast" role="status" class="toast" hidden></div>
+  <audio id="voice-audio" preload="none" hidden></audio><audio id="music-audio" preload="none" loop hidden></audio><audio id="sfx-audio" preload="none" hidden></audio>
+  <script src="story-data.js"></script><script src="core.js"></script><script src="translation-data.js?v=0.10.29"></script><script src="localization.js?v=auto-language-20261030-2"></script><script src="dmail-data.js"></script><script src="dmail-core.js"></script><script src="dmail-view.js?v=0.10.29"></script><script src="animation-data.js"></script><script src="animation-core.js"></script><script src="presentation-data.js?v=0.10.14"></script><script src="presentation-core.js?v=bg30a-20261029-1"></script><script src="prop-data.js"></script><script src="prop-core.js"></script>
+<script src="call-view.js?v=0.10.29"></script><script src="call-layout.js?v=0.10.29"></script>
+<script src="background-core.js?v=bg30a-20261029-1"></script><script src="coaster-data.js"></script><script src="coaster-view.js?v=0.10.21"></script><script src="local-video.js?v=worldline-20261023-1"></script><script src="animation-player.js?v=puzzle-background-20261029-1"></script><script src="native-ui.js?v=0.10.3"></script><script src="backlog-core.js?v=0.10.29"></script><script src="story-mode.js?v=0.10.29"></script><script src="reader-input.js?v=0.10.29"></script><script src="chapter-titles.js?v=manual-20261029-1"></script><script src="clock-contrast-data.js?v=clock-fix-20261029-2"></script><script src="clock-contrast.js?v=clock-fix-20261029-2"></script><script src="app.js?v=sgar-20261030-1"></script>
+</body></html>

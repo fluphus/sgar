@@ -1,0 +1,22 @@
+/* Eight title cards composed from one recovered original diagram and isolated v3 lettering.
+   Japanese lettering is baked into each card; Chinese remains switchable. */
+.chapter-title-card{position:absolute;inset:0;z-index:60;width:100%;height:100%;padding:0;border:0;border-radius:0;background:#000;color:#7777a4;cursor:pointer;overflow:hidden;text-align:left;container-type:size}
+.chapter-title-composition{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(100cqw,177.7778cqh);height:auto;aspect-ratio:16/9;container-type:size;pointer-events:none}
+.chapter-title-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scale(.9)}
+.chapter-title-number,.chapter-title-prefix,.chapter-title-term{display:none}
+.chapter-title-translation{position:absolute;right:12%;top:77%;max-width:76%;font:400 2.8cqw/1.5 "Noto Serif SC","Source Han Serif SC",SimSun,serif;color:#eee;white-space:nowrap}
+.chapter-title-translation[hidden]{display:none}
+.chapter-title-continue{position:absolute;right:4%;bottom:4%;color:#bbb;font:400 clamp(11px,1.25cqw,15px)/1.5 XRSans,Arial,sans-serif;letter-spacing:.04em;pointer-events:none}
+.chapter-title-card[data-art=loading] .chapter-title-continue{visibility:hidden}
+.chapter-title-card[data-art=loading] .chapter-title-composition{visibility:hidden}
+.chapter-title-card[data-art=fallback] .chapter-title-art{display:none}
+.chapter-title-card[data-art=fallback] .chapter-title-number{display:block;position:absolute;left:13%;top:47%;width:47%;border-bottom:1px solid #73739c;font:italic 3.8cqw/1.1 Georgia,"Times New Roman",serif;white-space:nowrap}
+.chapter-title-card[data-art=fallback] :is(.chapter-title-prefix,.chapter-title-term){display:block;position:absolute;margin:0;font-family:XRSerif,"Yu Mincho",serif;font-weight:500;line-height:1.15;letter-spacing:-.045em;white-space:nowrap;color:#75759e}
+.chapter-title-card[data-art=fallback] .chapter-title-prefix{left:30%;top:30%;font-size:7.2cqw}
+.chapter-title-card[data-art=fallback] .chapter-title-term{right:12%;top:56%;font-size:7.6cqw}
+.chapter-title-card:not([hidden]):not([data-art=loading]) .chapter-title-composition{animation:chapter-title-in .4s ease-out both}
+.reader[data-chapter-title=true] :is(.reader-hud,.dialogue,.phone-layer,.dmail-layer,.backlog-button,.reader-controls){visibility:hidden}
+body:has(.reader[data-chapter-title=true]) .reader-hud{visibility:hidden}
+@keyframes chapter-title-in{from{opacity:0}to{opacity:1}}
+@media(max-width:600px){.chapter-title-translation{font-size:3.7cqw}}
+@media(prefers-reduced-motion:reduce){.chapter-title-card:not([hidden]) .chapter-title-composition{animation:none}}

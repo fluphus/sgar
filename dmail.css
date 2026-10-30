@@ -1,0 +1,66 @@
+.dmail-layer{position:absolute;inset:0;z-index:8;background:#161514c9;color:#eee}
+.dmail-layer:empty{display:none}
+.reader:not([data-event-type=dmail]) .dmail-layer{display:none}
+.reader[data-event-type=dmail] .dialogue,.reader[data-event-type=dmail] .scene-clock{display:none}
+.reader[data-animating=true] .dmail-layer{visibility:hidden}
+.dmail-scroll{height:100%;overflow:hidden;overscroll-behavior:contain;padding:0 64px;scrollbar-width:thin}
+.dmail-layout{--phone-width:min(340px,calc(92cqh * .5005),42cqw);position:relative;height:100%;width:min(900px,100%);margin:0 auto;display:grid;grid-template-columns:var(--phone-width) minmax(0,420px);grid-template-rows:minmax(0,1fr);gap:30px;align-items:end;justify-content:center}
+.dmail-phone{position:relative;width:100%;container-type:inline-size;isolation:isolate;color:#323232;font:12px/1.3 XRSans,"Microsoft YaHei",sans-serif}
+.dmail-phone-art{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;object-fit:contain}
+.dmail-input,.dmail-fixed-to,.dmail-at-label,.dmail-commands{position:absolute;min-width:0;margin:0}
+.dmail-input{appearance:none;border:1px solid #999;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3' fill='none' stroke='%23444'/%3E%3C/svg%3E") right 1px center/3.8cqw no-repeat;color:#323232;border-radius:0;padding:0 4.5cqw 0 1cqw;min-height:calc(1.1em + 2px);font:400 clamp(8px,3.7cqw,14px)/1.1 XRSans,"Microsoft YaHei",sans-serif;cursor:pointer}
+.dmail-time{top:20.5%!important}
+.dmail-input[data-correct=false]{outline:2px solid #bd382b;outline-offset:0}
+.dmail-input[data-correct=true]{outline:2px solid #4c8754;outline-offset:0}
+.dmail-fixed-to,.dmail-at-label{display:flex;align-items:center;overflow-wrap:anywhere;font-size:clamp(8px,3.9cqw,15px);line-height:1.15}
+.dmail-commands{display:flex;flex-direction:column;justify-content:flex-start;gap:.5cqw;font-size:clamp(8px,3.8cqw,15px);font-weight:500;line-height:1.5;white-space:nowrap}
+.dmail-command small{font-size:.77em}
+.dmail-command.inactive{color:silver}
+.dmail-command.active{color:#323232}
+.dmail-inline-phrase{position:absolute;left:14%;top:47.1%;width:46%;font-size:clamp(10px,3.5cqw,13px);overflow-wrap:anywhere;line-height:1.4;max-height:6%;overflow:hidden}
+.dmail-send{position:absolute;border:1px solid #888;background:#f1f0ed;color:#252525;font:500 clamp(9px,4.2cqw,17px)/1 XRSans,"Microsoft YaHei",sans-serif;padding:0}
+.dmail-send:hover{background:#e1e6e9}
+.dmail-reading{display:flex;flex-direction:column;min-width:0;align-self:center;max-height:calc(100cqh - 64px);overflow:hidden;font:13px/1.8 Arial,"Microsoft YaHei",sans-serif}
+.dmail-copy{min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.dmail-prompt{font-size:16px;line-height:1.9;margin:0 0 15px;white-space:pre-wrap}
+.dmail-preview{background:#f5f3ed;color:#242728;padding:18px 20px;margin:18px 0;border:1px solid #a9a79e;overflow-wrap:anywhere}
+.dmail-preview h3{font-size:11px;font-weight:400;color:#62665f;margin:0 0 14px}
+.dmail-meta{display:grid;grid-template-columns:55px minmax(0,1fr);gap:4px 10px;margin:0 0 12px;font-size:12px}
+.dmail-meta dt{color:#62665f}.dmail-meta dd{margin:0;min-height:1.8em}
+.dmail-payload{font:400 17px/1.8 XRSans,"Microsoft YaHei",sans-serif;border-top:1px solid #c9cac3;padding-top:12px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.dmail-gloss{font-size:12px;line-height:1.9;color:#62665f;border-top:1px solid #d5d5ce;padding-top:10px;margin-top:12px;white-space:pre-line}
+.dmail-reading .event-actions{flex:none;margin-top:10px}.dmail-reading .answer-feedback{margin-bottom:0;white-space:pre-wrap}
+.dmail-original{margin-top:12px;font-size:12px;color:#62665f}.dmail-original summary{cursor:pointer}.dmail-original .dmail-payload{margin-top:10px;font-size:14px}
+.pun-reading{margin:8px 0 0;font:400 clamp(12px,1.6cqw,16px)/1.7 XRSans,"Microsoft YaHei",sans-serif;color:#c8c4b8;letter-spacing:.04em}
+.dialogue-content:has(.pun-reading) .body-text{min-height:0}
+@media(max-aspect-ratio:3/4){
+ .dmail-scroll{padding:0}
+ .dmail-layout{--phone-width:min(86cqw,calc(96cqh * .5005),340px);width:100%;display:block}
+ .dmail-phone{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:var(--phone-width)}
+ /* Keep the review below the phone's Send control even on a tall tablet. */
+ .dmail-reading{position:absolute;left:12px;right:12px;bottom:10px;width:auto;max-width:none;height:min(26cqh,calc(var(--phone-width) / .5005 * .34 - 20px));max-height:none;padding:12px 14px;background:#171b19f0;border:1px solid #ffffff40;border-radius:5px}
+ .dmail-prompt{font-size:14px}.dmail-preview{padding:15px}.dmail-payload{font-size:16px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ .dmail-scroll{padding:0 24px}
+ .dmail-layout{gap:20px}
+ .dmail-reading{align-self:end;margin-bottom:18px;max-height:calc(100cqh - 78px);font-size:12px}
+ .dmail-prompt{font-size:13px;line-height:1.65;margin-bottom:10px}
+ .dmail-preview{margin:10px 0;padding:12px}
+ .dmail-preview h3{margin-bottom:8px}
+ .dmail-meta{font-size:11px;line-height:1.4;gap:2px 10px;margin-bottom:8px}
+ .dmail-meta dd{min-height:1.4em}
+ .dmail-payload{font-size:14px;line-height:1.6}
+ .dmail-input{font-size:clamp(8px,3.7cqw,14px)}
+ .dmail-time{top:18.2%!important;width:67%!important}
+ .dmail-to,.dmail-fixed-to{top:28%!important}
+ .dmail-at,.dmail-at-label{top:33%!important}
+ .dmail-what,.dmail-commands{top:42%!important}
+ .dmail-what{width:40%!important}
+ .dmail-commands{left:56%!important;width:32%!important}
+ /* The full translated draft remains alongside the phone. Keep the native
+    command itself readable within the tiny screen instead of spilling out. */
+ .dmail-command small{display:none}
+ .dmail-send{min-height:0}
+ .dmail-reading .event-actions{margin-top:10px}
+}

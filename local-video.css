@@ -1,0 +1,12 @@
+.startup-layer { position: fixed; inset: 0; z-index: 200; background: #090302; }
+.startup-layer video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.startup-layer button { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: none; color: #e8dfce; }
+.startup-layer button span { position: absolute; right: max(24px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); font-size: 12px; letter-spacing: .08em; text-shadow: 0 1px 4px #000; }
+.startup-layer button:focus-visible { outline-offset: -6px; }
+.story-video-layer { position: absolute; inset: 0; z-index: 40; background: #000; }
+.story-video-layer video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.story-video-resume { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); border: 1px solid #e7e1d080; background: #151a19e8; color: #e7e1d0; padding: 13px 24px; }
+.materials-video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: contain; background: #000; margin: 16px 0 6px; }
+.worldline-demos { margin-top: 24px; }
+.worldline-demos summary { cursor: pointer; padding: 8px 0; }
+.worldline-demos h3 { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }

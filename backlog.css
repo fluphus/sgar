@@ -1,0 +1,30 @@
+#panel.backlog-panel{width:min(780px,calc(100vw - 24px));height:min(740px,calc(100svh - 24px));max-height:calc(100svh - 24px);background:var(--ui-overlay-bg);color:var(--ui-overlay-text);border-color:var(--ui-overlay-line);color-scheme:dark}
+.backlog-panel .panel-header{min-height:60px;background:transparent;border-color:var(--ui-overlay-line)}
+.backlog-panel .panel-header h2{font:500 18px/1.5 var(--ui-font)}
+.backlog-panel .panel-header .icon-button img{filter:invert(1);opacity:.85}
+.backlog-panel .panel-header .icon-button:hover{background:#edf1e31c}
+#panel.backlog-panel #panel-body{display:flex;flex:1;min-height:0;overflow:hidden;padding:0 24px}
+.backlog-view{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0}
+.backlog-tools{display:flex;gap:12px;flex:none;padding:14px 0;border-bottom:1px solid var(--ui-overlay-line)}
+.backlog-tools select,.backlog-tools input{min-width:0;min-height:40px;border:1px solid #d1d6c840;border-radius:4px;background:#171d1bd9;color:#e7e8df;font:13px var(--ui-font);padding:8px 10px;color-scheme:dark}
+.backlog-tools select{width:48%}.backlog-tools input{flex:1;width:0}
+.backlog-tools input::placeholder{color:#acb5ac}
+.backlog-tools option{background:#202623;color:#e7e8df}
+.backlog-list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a0a499 transparent;scroll-padding:10px}
+.backlog-chapter{font:500 12px/1.6 var(--ui-font);color:#c3b18e;margin:0;padding:18px 8px 8px;letter-spacing:.02em}
+.backlog-panel .log-entry{position:relative;color:#edf0e7;background:transparent;border:0;border-bottom:1px solid #e3e6d71c;padding:0;font:500 16px/1.85 XRSerif,"Microsoft YaHei",serif;overflow-wrap:anywhere}
+.backlog-panel .log-entry.current{border-left:2px solid #d6bc93;background:#edf1e30a}
+.backlog-entry-body{display:block;width:100%;border:0;border-radius:0;background:none;color:inherit;padding:15px 8px;text-align:left;font:inherit;user-select:text}
+.backlog-entry-play{cursor:pointer}
+.backlog-entry-play:hover{background:#edf1e308}
+.backlog-entry-play:focus-visible{outline:1px solid #d6bc93;outline-offset:-2px}
+.backlog-panel .log-entry.playing{background:#d6bc9314;box-shadow:inset 2px 0 #d6bc93}
+.backlog-text{display:block;margin:8px 0 0;white-space:pre-wrap}
+.backlog-meta{display:block;padding-right:66px;color:#c5bdab;font:12px/1.5 var(--ui-font);min-height:20px}
+.backlog-jump,.backlog-latest{border:0;border-radius:3px;background:none;color:#cbb692;padding:7px 0;min-height:34px;font:12px/1.5 var(--ui-font);white-space:nowrap}
+.backlog-jump{position:absolute;right:8px;top:6px;z-index:1;padding:7px 8px}
+.backlog-jump:hover,.backlog-latest:hover{color:#fff1d7;text-decoration:underline}
+.backlog-footer{display:flex;justify-content:space-between;align-items:center;flex:none;gap:12px;padding:5px 8px;border-top:1px solid var(--ui-overlay-line);font:12px/1.5 var(--ui-font);color:#acb5ac}
+.backlog-empty{padding:24px 8px;color:#acb5ac}
+@media(max-width:480px){#panel.backlog-panel #panel-body{padding:0 14px}.backlog-tools{gap:8px}.backlog-tools select{width:45%}.backlog-panel .log-entry{font-size:15px}.backlog-jump{min-height:40px;top:3px}}
+@media(max-height:450px) and (orientation:landscape){.backlog-panel .panel-header{min-height:44px;padding:4px 16px}.backlog-tools{padding:7px 0}.backlog-footer{padding:0 8px}}

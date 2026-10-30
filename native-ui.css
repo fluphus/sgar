@@ -1,0 +1,33 @@
+.phone-layer{position:absolute;inset:0;z-index:8;background:#161514d9;color:#eee}
+.phone-layer:empty{display:none}
+.reader:not([data-event-type=mail]):not([data-event-type=image]):not([data-event-type=document]) .phone-layer{display:none}
+.reader[data-event-type=mail] .dialogue,.reader[data-event-type=image] .dialogue,.reader[data-event-type=document] .dialogue,.reader[data-event-type=mail] .scene-clock,.reader[data-event-type=image] .scene-clock{display:none}
+.reader[data-animating=true] .phone-layer{visibility:hidden}
+.native-phone-layout{--phone-width:min(340px,calc(96cqh * .4792),42cqw);height:100%;max-width:900px;margin:auto;display:flex;align-items:end;justify-content:center}
+.native-phone{position:relative;width:var(--phone-width);container-type:inline-size;isolation:isolate;color:#323232;font:500 14px/1.45 XRSans,"Microsoft YaHei",sans-serif}
+.native-phone-art{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.native-mail-field{position:absolute;overflow:hidden;overflow-wrap:anywhere;white-space:pre-wrap}
+.native-mail-divider{position:absolute;left:9.3%;width:80.8%;top:29.95%;height:2.05%;box-sizing:border-box;background:#fff;border-bottom:1px solid #595452;pointer-events:none}
+.native-mail-time,.native-mail-from,.native-mail-subject{display:flex;align-items:center;white-space:nowrap;font-size:clamp(11px,4.1cqw,15px)}
+.native-mail-body{font-size:clamp(16px,5cqw,20px);line-height:1.65;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#777 #eee;touch-action:pan-y;padding-right:4px;box-sizing:border-box;cursor:text}
+.native-mail-body:focus-visible{outline:2px solid #37668a;outline-offset:1px}
+.native-attachment-button{position:absolute;padding:0;border:0;border-radius:0;background:#626262;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.native-attachment-button:hover{background:#626262}.native-attachment{width:100%;height:100%;object-fit:contain;display:block}
+.native-document-layout{height:100%;display:flex;align-items:end;justify-content:center;pointer-events:none}
+.native-document-button{height:96%;max-width:90%;padding:0;border:0;background:transparent;cursor:zoom-in;pointer-events:auto}
+.native-document-button:hover{background:transparent}
+.native-document-button img{display:block;height:100%;max-width:100%;object-fit:contain}
+.native-mail-copy{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.9}
+.original-materials{font:15px/1.9 XRSans,"Microsoft YaHei",sans-serif}.materials-context{color:#56594f;font-size:13px}
+.materials-guide,.materials-notice{border-top:1px solid #bbb8ac;margin-top:22px;padding-top:12px}.original-materials h3{font-size:18px}
+.native-blue-button{background:url('assets/c9e52187fe19fd0b4963cda2.webp') center/100% 100% no-repeat;color:#fff;border:0;min-height:64px;width:min(100%,320px);padding:14px 28px;white-space:pre-line;font:500 15px/1.5 XRSans,"Microsoft YaHei",sans-serif}
+.native-blue-button:hover{filter:brightness(.9);background-color:transparent}
+.materials-alternative{position:relative;background:#fffdf5;border:1px solid #b9b8ae;margin-top:20px;padding:20px 58px 20px 20px}.materials-alternative h4{margin-top:0}
+.native-dialog-close{position:absolute;top:12px;right:12px;width:32px;height:32px;padding:3px;border:0;background:transparent}.native-dialog-close img{width:100%;height:100%}
+.materials-notice-image{display:block;background:#17191a;border:0;padding:0;width:min(100%,440px);margin:auto;cursor:zoom-in}.materials-notice-image img{display:block;width:100%;height:auto}
+.toast.native-notice{top:24px;bottom:auto;border:0;box-shadow:none;min-width:240px;max-width:min(85vw,720px);background:url('assets/00eaa46ffcc0a267cb0e7c14.webp') center/100% 100% no-repeat;color:#fff;padding:14px 34px}
+.toast.native-notice[data-tone=light]{background-image:url('assets/3b1aecb4a9810bc5f2706a3a.webp');color:#252525}
+@media(max-aspect-ratio:3/4){
+ .native-phone-layout{--phone-width:min(88cqw,calc(96cqh * .4792),340px);position:relative}
+ .native-phone{position:absolute;bottom:0;left:50%;transform:translateX(-50%)}
+}

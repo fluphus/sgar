@@ -1,0 +1,97 @@
+/* Official poster: complete image, full window height beside the menu. */
+.home{--cover-paper:#f0eee7;--poster-width:min(58vw,70.671378svh);position:relative;height:100svh;min-height:100svh;padding:0;display:block;background:var(--cover-paper);isolation:isolate}
+.home::before{content:none}
+.home .masthead{position:absolute;top:clamp(22px,4svh,44px);left:clamp(28px,4vw,64px);right:calc(var(--poster-width) + clamp(28px,4vw,64px));gap:12px;font-size:9px;color:#62655b}
+.home .wordmark{font-size:21px;color:#262d32}
+.home .masthead b{font:9px monospace;margin-left:5px}
+.home-layout{display:grid;grid-template-columns:minmax(0,1fr) var(--poster-width);height:100%;align-items:center;gap:0;padding:0}
+.home .home-copy{width:min(420px,calc(100% - 96px));margin:0;padding:24px 0;justify-self:center}
+.home .eyebrow{margin:0 0 22px;font:10px/1.5 monospace;letter-spacing:.19em;color:#9e3b39}
+.home h1{font:500 clamp(32px,4.25vw,62px)/1.38 "Yu Mincho","SimSun",serif;letter-spacing:.04em;text-shadow:none;color:#232b30}
+.home h1 span{display:block;font-size:1em}
+.home .home-sub{font-size:12px;letter-spacing:.09em;margin:20px 0 34px;line-height:1.8}
+.home .home-actions{width:min(300px,100%);gap:0}
+.home .home-actions button{border:0;border-bottom:1px solid #d3d4cc;border-radius:0;background:transparent;color:#293239;padding:15px 4px;min-height:50px;font-size:13px;letter-spacing:.1em;transition:color .16s,background .16s}
+.home .home-actions>.primary:first-child:not([hidden]),.home .home-actions>[hidden]+.primary{background:#293239;color:#f7f4eb;border-color:#293239;padding-inline:18px;margin-bottom:4px}
+.home .home-actions button:hover{color:#9e3b39;background:#29323908}
+.home .home-actions>.primary:first-child:not([hidden]):hover,.home .home-actions>[hidden]+.primary:hover{background:#9e3b39;border-color:#9e3b39;color:#fff8ec}
+.home .text-button span{font:10px monospace;letter-spacing:.08em}
+.home-preferences{display:flex;align-items:center;flex-wrap:wrap;gap:0 14px;margin-top:16px}
+.home .home-meta{margin:0;font-size:10px;line-height:1.7;letter-spacing:.02em}
+.home .language-toggle{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:4px 0;border:0;background:transparent;color:#6a6b63;font-size:11px;cursor:pointer}
+.language-toggle [lang]{border-bottom:1px solid transparent;padding-bottom:2px}
+.language-toggle[aria-pressed="false"] [lang="zh-CN"],.language-toggle[aria-pressed="true"] [lang="ja"]{color:#293239;border-bottom-color:#9e3b39;font-weight:600}
+.language-toggle .language-divider,.language-toggle .language-arrow{color:#9e3b39}
+.home .language-toggle:hover{color:#9e3b39}
+.home .language-toggle:focus-visible{outline:2px solid #9e3b39;outline-offset:3px}
+.home #home-mode{gap:6px}
+.home .home-actions #home-mode span{display:inline;font-size:16px}
+.home-links{display:flex;flex-wrap:wrap;gap:0 18px}
+.home .inline-link{font-size:11px;min-height:30px;text-decoration:none;border:0}
+.home .inline-link:hover{color:#9e3b39;text-decoration:underline;text-underline-offset:4px}
+.home .home-art{position:relative;inset:auto;height:100%;width:100%;opacity:1;z-index:1}
+.cover-keyvisual{display:block;height:100%;width:100%;object-fit:contain;object-position:right center}
+.home .home-footer{position:absolute;left:clamp(28px,4vw,64px);right:calc(var(--poster-width) + clamp(28px,4vw,64px));bottom:24px;margin:0;gap:12px;font-size:8px;letter-spacing:.03em;color:#62655b}
+.home .home-footer>span:first-child{font:9px/1.5 Arial,sans-serif;letter-spacing:.03em}
+@media(min-aspect-ratio:1/1) and (max-height:650px){
+ .home .masthead{top:20px}
+ .home .home-copy{width:min(360px,calc(100% - 64px));padding:12px 0}
+ .home .eyebrow{margin-bottom:14px}
+ .home h1{font-size:clamp(28px,4vw,46px);line-height:1.25}
+ .home .home-sub{margin:14px 0 20px}
+ .home .home-actions button{min-height:44px;padding-block:11px}
+ .home .home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;width:min(360px,100%)}
+ .home .home-actions:has(#continue[hidden]) #home-mode{grid-column:1/-1}
+ .home .home-actions button{justify-content:center;padding-inline:6px;font-size:12px;letter-spacing:.04em}
+ .home .home-actions>.primary:first-child:not([hidden]),.home .home-actions>[hidden]+.primary{padding-inline:6px;margin:0}
+ .home .home-actions button span{display:none}
+ .home-preferences{margin-top:10px}
+ .home .home-footer{bottom:16px}
+}
+@media(min-aspect-ratio:1/1) and (max-height:480px){
+ .home .masthead{top:13px;left:24px;right:calc(var(--poster-width) + 24px);font-size:7px}
+ .home .wordmark{font-size:17px}
+ .home .masthead>span:last-child{font-size:0}
+ .home .masthead b{font-size:8px}
+ .home .home-copy{width:min(320px,calc(100% - 48px));padding:34px 0 30px}
+ .home .eyebrow,.home .home-sub{display:none}
+ .home h1{font-size:clamp(21px,3vw,30px);line-height:1.4}
+ .home h1 span{display:inline}
+ .home .home-actions{margin-top:12px}
+ .home .home-actions button{min-height:42px;padding-block:10px}
+ .home-preferences{margin-top:6px;gap:0 10px}
+ .home .home-meta{font-size:9px}
+ .home-links{gap:0 14px}
+ .home .inline-link{font-size:10px}
+ .home .home-footer{bottom:9px;left:24px;right:calc(var(--poster-width) + 24px);font-size:8px}
+ .home .home-footer>span:first-child{font-size:8px}
+}
+/* A two-column menu keeps all four actions readable on portrait screens. */
+@media(max-aspect-ratio:1/1){
+ .home .masthead{display:none}
+ .home-layout{display:flex;flex-direction:column;align-items:stretch}
+ .home .home-art{order:-1;flex:none;height:max(0px,min(calc(100svh - 280px),141.5vw))}
+ .cover-keyvisual{object-position:center}
+ .home .home-copy{flex:1;width:100%;margin:0;padding:14px 20px 30px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center}
+ .home .eyebrow,.home .home-sub{display:none}
+ .home h1{font-size:clamp(21px,3.7vw,29px);line-height:1.4;letter-spacing:.055em}
+ .home h1 span{display:inline}
+ .home .home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;width:min(440px,100%);margin:12px auto 0}
+ .home .home-actions:has(#continue[hidden]) #home-mode{grid-column:1/-1}
+ .home .home-actions button{min-height:44px;padding:10px 6px;justify-content:center;align-items:center;font-size:12px;letter-spacing:.04em;border-bottom:1px solid #c8cbc5}
+ .home .home-actions>.primary:first-child:not([hidden]),.home .home-actions>[hidden]+.primary{padding:10px 6px;margin:0}
+ .home .home-actions button span{display:none}
+ .home-preferences{justify-content:center;gap:0 12px;margin-top:8px}
+ .home .home-meta{font-size:9px;line-height:1.7}
+ .home-links{justify-content:center;gap:0 18px}
+ .home .inline-link{font-size:10px;min-height:30px}
+ .home .home-footer{left:20px;right:20px;bottom:10px;font-size:7px}
+ .home .home-footer>span:first-child{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.home .home-actions button{transition:none}}
+
+/* Secondary distribution links preserve the primary reading menu. */
+.home-downloads{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:0 12px;margin-top:2px}
+.home-downloads .inline-link{display:inline-flex;align-items:center;min-height:30px;white-space:nowrap}
+.download-size{font-size:9px;color:#767970;white-space:nowrap}
+@media(max-aspect-ratio:1/1){.home-downloads{justify-content:center}.home .home-art{height:max(0px,min(calc(100svh - 310px),141.5vw))}}

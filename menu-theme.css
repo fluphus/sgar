@@ -1,0 +1,102 @@
+/* Sampled from the flat interior of the original dialogue texture:
+   assets/0fc56add66cfa3d37157156c.webp = RGBA(34,24,21,179).
+   Use one translucent surface, without a second dimming/blur layer. */
+:root{
+ --ui-overlay-bg:#221815b3;--ui-overlay-text:#fff;--ui-overlay-line:#ffffff8f;
+ --ui-paper:var(--ui-overlay-bg);--ui-ink:#fff;--ui-muted:#ffffffc4;--ui-line:#ffffff30;--ui-accent:#fff;
+ --ui-control-bg:#00000024;--ui-control-hover:#ffffff16;--ui-control-line:#ffffff70;--ui-option-bg:#221815;
+}
+.reader-controls,#panel:not(.image-panel){background:var(--ui-overlay-bg);color:var(--ui-overlay-text);border:1px solid var(--ui-overlay-line);border-radius:5px;box-shadow:none;backdrop-filter:none;color-scheme:dark;text-shadow:0 1px 2px #0006}
+#panel:not(.image-panel)::backdrop{background:transparent;backdrop-filter:none}
+#panel:not(.image-panel) .panel-header{background:transparent;border-color:var(--ui-line)}
+#panel:not(.image-panel) .panel-header .icon-button img{filter:invert(1);opacity:1}
+#panel:not(.image-panel) .panel-header .icon-button{border-radius:50%}
+#panel:not(.image-panel) .panel-header .icon-button:focus-visible{outline-width:1px;outline-offset:2px}
+#panel:not(.image-panel) .panel-header .icon-button:hover{background:var(--ui-control-hover);border-color:var(--ui-control-line)}
+body:has(#panel[open]:not(.image-panel)) :is(.reader .dialogue,.reader .phone-layer,.reader .dmail-layer,.reader-hud,#log,.home-copy,.masthead,.home-footer){visibility:hidden}
+.chapter-heading,.setting-row,.settings-panel .setting-row,.save-row,.chapter-card,.backlog-tools,.backlog-footer{border-color:var(--ui-line)}
+.chapter-heading h2,.chapter-card,.chapter-card b,.reader-controls .control-buttons button,.backlog-panel .log-entry{color:#fff}
+.chapter-heading>span,.reader-status,.panel-note,.settings-panel .panel-note,.save-row small,.backlog-count,.backlog-empty,.backlog-chapter,.backlog-meta,.coaster-reference,.coaster-voice-status,.materials-context{color:var(--ui-muted)}
+.mode-badge,.control-buttons #save,.control-buttons #settings,.control-buttons button{background:var(--ui-control-bg);color:#fff}
+.control-buttons button:hover,.control-buttons button[aria-pressed=true]{background:var(--ui-control-hover);border-color:var(--ui-control-line);color:#fff}
+.control-buttons #menu,.control-buttons #original-materials{color:var(--ui-muted);background:transparent}
+.control-buttons #auto[aria-pressed=true]::after,.control-buttons #mute[aria-pressed=false]::after{background:#fff;box-shadow:none}
+.control-buttons #auto::after,.control-buttons #mute::after{background:#ffffff50}
+.progress-track{background:#ffffff26}.progress-track>div{background:#ffffffb3}
+.chapter-card:hover,.backlog-entry-play:hover,.backlog-panel .log-entry.playing{background:var(--ui-control-hover);color:#fff}
+.backlog-panel .log-entry{border-bottom-color:#ffffff26}
+.backlog-panel .log-entry.current{border-left-color:#fff;background:#ffffff0a}
+.backlog-panel .log-entry.playing{box-shadow:inset 2px 0 #fff}
+.backlog-list{overflow-anchor:none;scrollbar-color:#ffffff80 transparent}
+:is(#panel-body,.reader-controls,.backlog-list,.dialogue-content){color-scheme:dark;scrollbar-color:#ffffff80 transparent}
+.backlog-entry-play:focus-visible{outline-color:#fff}
+.backlog-jump,.backlog-latest,#panel:not(.image-panel) .inline-link{color:#fff}
+.backlog-jump:hover,.backlog-latest:hover,#panel:not(.image-panel) .inline-link:hover{color:#fff;background:var(--ui-control-hover)}
+#panel:not(.image-panel) input:not([type=range]),#panel:not(.image-panel) select,.puzzle-fields input,.puzzle-fields select{
+ background-color:var(--ui-control-bg);color:#fff;border-color:var(--ui-control-line);color-scheme:dark;
+}
+#panel:not(.image-panel) input::placeholder,.puzzle-fields input::placeholder{color:#ffffffb3}
+#panel:not(.image-panel) select option,#panel:not(.image-panel) select optgroup,.puzzle-fields select option,.puzzle-fields select optgroup{background:var(--ui-option-bg);color:#fff}
+.setting-row select,#panel.settings-panel .setting-row select,.puzzle-fields select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='white' stroke-width='1.3'/%3E%3C/svg%3E")}
+.settings-panel .setting-row select:hover{border-color:#fff}
+.settings-panel .setting-row input[type=range]::-webkit-slider-runnable-track{background:#ffffff60}
+.settings-panel .setting-row input[type=range]::-webkit-slider-thumb{background:#fff;border-color:#221815;box-shadow:0 0 0 1px #ffffff80}
+.settings-panel .setting-row input[type=range]::-moz-range-track{background:#ffffff60}
+.settings-panel .setting-row input[type=range]::-moz-range-thumb{background:#fff;border-color:#221815}
+.save-row button,.panel-action,.coaster-submit,.event-actions button,.event-actions .solve,.complete .primary{
+ background:var(--ui-control-bg);color:#fff;border:1px solid var(--ui-control-line);text-shadow:inherit;
+}
+.save-row button:not(:disabled):hover,.panel-action:hover,.coaster-submit:hover,.event-actions button:hover,.event-actions .solve:hover,.complete .primary:hover{
+ background:var(--ui-control-hover);color:#fff;border-color:#fff;
+}
+.save-row button:disabled{background:transparent;color:#ffffffb3;border-color:#ffffff40;opacity:.45}
+.event-actions .inline-link{background:transparent;color:#fff;border-color:transparent}
+.event-actions .inline-link:hover{background:var(--ui-control-hover);color:#fff}
+.answer-feedback,.coaster-feedback{color:#ffe1cf}
+.question-note{color:var(--ui-muted)!important}.puzzle-fields label{color:#fff}
+.reader .dialogue.interactive::before{background-color:transparent}
+.clue-card{background:transparent;border-color:var(--ui-control-line)}
+.clue-card:hover{border-color:#fff;box-shadow:none}
+/* The phone artwork retains its original white display; these are added surfaces. */
+.phone-layer{background:var(--ui-overlay-bg)}
+.dmail-layer{background:transparent}
+.dmail-reading{background:#fff;color:#323232;border:1px solid #999;border-radius:3px;padding:12px 14px;text-shadow:none;color-scheme:light}
+.dmail-copy{background:#fff;color:#323232;color-scheme:light;scrollbar-color:#999 #fff}
+.dmail-preview{background:#fff;color:#323232;border-color:#ccc;box-shadow:none}
+.dmail-preview h3,.dmail-meta dt,.dmail-gloss,.dmail-original{color:#666}
+.dmail-payload,.dmail-gloss{border-color:#ccc}
+.dmail-reading .event-actions button{color:#323232;background:#f4f4f4;border-color:#aaa;text-shadow:none}
+.dmail-reading .event-actions button:hover{color:#111;background:#e8e8e8;border-color:#777}
+.dmail-reading .event-actions .inline-link{background:transparent;border-color:transparent;color:#555}
+.dmail-reading .answer-feedback{color:#963e2b}
+.dmail-reading :is(button,a):focus-visible{outline-color:#444}
+.materials-guide,.materials-notice,.materials-alternative{border-color:var(--ui-line)}
+.materials-alternative{background:transparent;color:#fff}
+.materials-alternative .native-dialog-close img{filter:invert(1)}
+.complete p{color:var(--ui-muted)}
+.toast:not(.native-notice),.reader-hud .fast-forward-status,.story-video-resume{background:var(--ui-overlay-bg);color:#fff;border:1px solid var(--ui-overlay-line);box-shadow:none}
+/* Home actions share the same surface without changing the poster composition. */
+.home .home-actions{background:var(--ui-overlay-bg);border:1px solid var(--ui-overlay-line);border-radius:5px;padding:5px}
+.home .home-actions button,.home .home-actions>.primary:first-child:not([hidden]),.home .home-actions>[hidden]+.primary{background:transparent;color:#fff;border-color:var(--ui-line);margin-bottom:0}
+.home .home-actions button span{color:var(--ui-muted)}
+.home .home-actions button:hover,.home .home-actions>.primary:first-child:not([hidden]):hover,.home .home-actions>[hidden]+.primary:hover{background:var(--ui-control-hover);color:#fff;border-color:var(--ui-control-line)}
+:where(.reader-controls,#panel,.home-actions,.event-actions,.puzzle-fields) :is(button,a,input,select):focus-visible{outline-color:#fff}
+/* Select complete Chinese families before the original Japanese face. Its
+   U+590D is a narrow Japanese glyph, not a horizontally scaled DOM element. */
+:root{--zh-ui-font:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Noto Sans SC",sans-serif;--zh-serif-font:"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,serif}
+:lang(zh-CN){--ui-font:var(--zh-ui-font)}
+:lang(ja){--ui-font:XRSans,"Yu Gothic",sans-serif}
+.backlog-panel .log-entry:lang(zh-CN){font-family:var(--zh-serif-font)}
+:is(.dmail-phone,.dmail-input,.dmail-send,.dmail-payload,.native-phone,.original-materials,.native-blue-button):lang(zh-CN){font-family:var(--zh-ui-font)}
+.dmail-payload:lang(ja),.dmail-inline-phrase:lang(ja){font-family:XRSans,"Yu Gothic",sans-serif}
+@media(max-width:480px),(max-height:520px){
+ .setting-row{grid-template-columns:minmax(75px,1fr) minmax(110px,1.35fr);gap:12px;min-height:44px;padding:6px 0;font-size:12px}
+ .setting-row select{min-height:30px;font-size:12px;padding-left:8px;padding-right:25px;background-position:right 6px center;background-size:13px}
+ .backlog-tools select,.backlog-tools input{min-height:30px;padding:5px 7px;font-size:12px}
+ .puzzle-fields input,.puzzle-fields select{min-height:32px;font-size:12px;padding:6px 8px}
+ #panel input:is([type=checkbox],[type=radio]){width:13px;height:13px;min-height:0;margin:0}
+ .setting-row input[type=range]{height:26px}
+ .setting-row input[type=range]::-webkit-slider-thumb{width:13px;height:13px;margin-top:-5px;border-width:2px}
+ .dmail-reading .event-actions{gap:8px;margin-top:7px;padding-bottom:0}
+ .dmail-reading .event-actions button{min-height:30px;padding:5px 10px;font-size:12px}
+}
