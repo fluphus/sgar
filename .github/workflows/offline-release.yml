@@ -1,0 +1,35 @@
+name: Build offline release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag
+        required: true
+        default: v2026.10.30
+
+permissions:
+  contents: write
+
+concurrency:
+  group: offline-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Package and verify the offline game
+        run: python3 .github/scripts/package-offline.py
+      - name: Publish verified ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          gh release upload "$RELEASE_TAG" sgar-offline.zip --clobber
+          gh release edit "$RELEASE_TAG" --notes-file release-notes.md
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" --jq '.assets[] | select(.name == "sgar-offline.zip") | {name, state, size, digest, browser_download_url}'
